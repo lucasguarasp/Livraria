@@ -96,23 +96,7 @@ namespace CRUD_Livraria.Gestores
 
             }
 
-            return livro;
-        }
-
-        public async Task<Livro> ComprarLivro(long id)
-        {
-            Livro livro = GetLivro(id).Result;
-            if (livro != null)
-            {
-                livro.Quantidade--;
-                using (ITransaction transaction = _session.BeginTransaction())
-                {
-                    await _session.SaveOrUpdateAsync(livro);
-                    await transaction.CommitAsync();
-                }
-            }
-
-            return livro;
+            return livro != null ? livro : _livro; ;
         }
 
         private bool livroValido(Livro livro)
