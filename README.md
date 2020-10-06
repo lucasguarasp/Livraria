@@ -9,12 +9,17 @@ CRUD usando Angular version 9.0.3 e Rest
 Necessário ter o PostgreSQL instalado na máquina.
 
 
-Para rodar o front:
-npm install
+# Para rodar o Front:
+npm install,
 ng serve
 
-obs: necessario rodar o back junto
+obs: necessario rodar o back junto,
 navegar por http://localhost:4200/
 
 
-# Livraria
+# Para rodar Back
+em 'appsettings.json', verificar a string de conexão 'DefaultConnection',
+obs: trocar senha do banco local, não é necessário criar ou alterar o nome do banco,
+já tem uma configuração no startup para criar o banco e add a tabelas.
+
+
