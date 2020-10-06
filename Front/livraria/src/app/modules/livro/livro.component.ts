@@ -146,12 +146,12 @@ export class LivroComponent implements OnInit {
   }
 
   public comprarLivro(livroId: number) {
-    //this.editarLivro(livroId);
     this.livroService.comprar(livroId).subscribe(
       response => {
         if (response) {
-          // this.livro = response;
-          this.livros.find(p => p.livroId == livroId).quantidade -= 1;
+          this.livro = response;
+          this.preencherFormulario();
+          this.obterLivros();
         } else {
           this.livro = new Livro;
         }

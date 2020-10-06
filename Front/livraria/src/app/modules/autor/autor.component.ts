@@ -85,6 +85,7 @@ export class AutorComponent implements OnInit {
           if (response) {
             this.autor = response;
             this.preencherFormulario();
+            this.obterAutores();
           } else {
             this.autor = new Autor;
           }
