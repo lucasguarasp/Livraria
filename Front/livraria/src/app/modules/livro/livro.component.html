@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <form class="needs-validation" [formGroup]="form" novalidate>
+        <div class="form-row">
+          <div class="col-md-2 mb-3" *ngIf="this.livro.livroId">
+            <label for="livroId">Id</label>
+            <input
+              type="text"
+              class="form-control"
+              id="livroId"
+              formControlName="livroId"
+              readonly
+            />
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationTooltip02">Autor</label>
+            <select class="form-control" id="idAutor" formControlName="idAutor">
+              <option [value]="null"></option>
+              <option *ngFor="let autor of autores" [value]="autor.autorId">
+                {{ autor.nome }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-2 mb-3">
+            <label for="quantidade">Quantidade</label>
+            <input
+              type="number"
+              class="form-control"
+              id="quantidade"
+              formControlName="quantidade"
+              required
+            />
+          </div>
+          <div class="col-md-2 mb-3">
+            <label for="estoque">Estoque</label>
+            <input
+              type="number"
+              class="form-control"
+              id="estoque"
+              formControlName="estoque"
+              required
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 mb-3">
+            <button
+              class="btn btn-primary"
+              type="submit"
+              (click)="enviarLivro()"
+            >
+              Enviar
+            </button>
+          </div>
+          <div class="col-md-2 mb-3">
+            <button
+              class="btn btn-primary"
+              type="submit"
+              (click)="limparFormulario()"
+            >
+              Limpa
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-6">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Estoque</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let livro of livros">
+            <th scope="row">{{ livro?.livroId }}</th>
+            <td>{{ livro?.autor?.nome }}</td>
+            <td>{{ livro?.quantidade }}</td>
+            <td>{{ livro?.estoque }}</td>
+            <td>
+              <div class="row">
+                <button
+                class="btn btn-primary"
+                type="submit"
+                (click)="editarLivro(livro.livroId)"
+              >
+                <i class="fas fa-edit">Editar</i>
+              </button>
+              |
+              <button
+                class="btn btn-danger"
+                type="submit"
+                (click)="deletarLivro(livro.livroId)"
+              >
+                <i class="far fa-trash-alt">Apagar</i>
+              </button>
+              |
+              <button
+                class="btn btn-success"
+                type="submit"
+                (click)="comprarLivro(livro.livroId)"
+              >
+                <i class="">Comprar</i>
+              </button>
+              </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
